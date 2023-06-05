@@ -21,6 +21,11 @@ module.exports = {
 					300: "#cbcbcb",
 					400: "#757575",
 					500: "#3a4254"
+				},
+				theme: {
+					dropShadow: {
+						"3xl": "0 25px 25px -10px #2388ff"
+					}
 				}
 			}
 		}
