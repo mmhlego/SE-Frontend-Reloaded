@@ -4,7 +4,7 @@ type Props = {
 	label: string;
 	group: string;
 	disabled?: boolean;
-	checked?: boolean;
+	defaultChecked?: boolean;
 	className?: string;
 	onChange?: (value: boolean) => void;
 };
@@ -13,6 +13,7 @@ export default function RadioButton({
 	label,
 	group,
 	disabled = false,
+	defaultChecked = false,
 	className,
 	onChange
 }: Props) {
@@ -25,12 +26,13 @@ export default function RadioButton({
 					"before:w-3 before:h-3 before:rounded-full before:bg-white before:absolute before:z-10 before:m-1"
 				)}
 				type="radio"
+				id={label}
 				name={group}
-				onChange={(e) => {
-					!disabled && onChange && onChange(e.target.checked);
-				}}
+				defaultChecked={defaultChecked}
+				disabled={disabled}
+				onChange={(e) => onChange && onChange(e.target.checked)}
 			/>
-			{label}
+			<label htmlFor={label}>Second Item</label>
 		</div>
 	);
 }

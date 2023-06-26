@@ -1,3 +1,4 @@
+import { twMerge } from "tailwind-merge";
 import Button from "../components/Button";
 import CheckBox from "../components/CheckBox";
 import InputField from "../components/InputField";
@@ -9,7 +10,7 @@ export default function TestPage() {
 	return (
 		<div className="min-h-screen w-screen flex flex-col gap-5 justify-center items-center">
 			<TestSection>
-				{/* <FontAwesomeIcon icon={icon({ name: "coffee" })} /> */}
+				<i className="fa fa-spinner animate-spin" />
 
 				<Button text="Button" accent="orange" />
 				<Button text="Button" accent="green" noBorder secondary />
@@ -35,12 +36,12 @@ export default function TestPage() {
 
 			<TestSection dir="flex-col">
 				<CheckBox label="First Item" />
-				<CheckBox label="Second Item" checked />
+				<CheckBox label="Second Item" defaultChecked />
 				<CheckBox label="Third Item" />
 			</TestSection>
 
 			<TestSection dir="flex-col">
-				<RadioButton checked label="First Item" group="g1" />
+				<RadioButton label="First Item" group="g1" defaultChecked />
 				<RadioButton label="Second Item" group="g1" />
 				<RadioButton label="Third Item" group="g1" />
 			</TestSection>
