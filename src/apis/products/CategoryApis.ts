@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Category, Subcategory } from "../../models/Category";
-import { StatusResponse } from "../../models/statusResponses";
+import { StatusResponse } from "../../models/StatusResponses";
 
 export async function GetCategories(): Promise<Category[]> {
 	const response = await axios.get("/Products/Category/categories", {});
@@ -8,7 +8,7 @@ export async function GetCategories(): Promise<Category[]> {
 }
 
 export async function GetAllSubcategories(): Promise<Subcategory[]> {
-	const response = await axios.get("/Products/Category/subcategories", {});
+	const response = await axios.get("/Products/Category/subcategories");
 	return response.data;
 }
 
