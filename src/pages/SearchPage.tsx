@@ -5,11 +5,16 @@ import Loading from "../components/Loading";
 
 export default function SearchPage() {
 	const [searchParams, _] = useSearchParams();
+	const searchText = searchParams.get("value");
 
-	const { isLoading: sellersLoading, data: sellers } = useQuery(
-		[`sellers-${searchParams.get("value")}`],
-		() => GetSellers(1, 5)
+	const { isLoading: sellersLoading, data: sellers } = useQuery([`sellers-${searchText}`], () =>
+		GetSellers(1, 5, searchText?.toString())
 	);
+
+	// const { isLoading: productsLoading, data: products } = useQuery(
+	// 	[`products-${searchText}`],
+	// 	() => GetProducts()
+	// );
 
 	return (
 		<div className="flex flex-col p-8 gap-4">

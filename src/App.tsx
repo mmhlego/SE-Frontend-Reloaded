@@ -6,6 +6,9 @@ import { router } from "./routes/Routes";
 import { store } from "./stores/Store";
 import { useLayoutEffect } from "react";
 import axios from "axios";
+import { ContextProvider } from "./Context/MainContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 	const client = new QueryClient();
@@ -17,11 +20,14 @@ function App() {
 	}, []);
 
 	return (
-		<Provider store={store}>
-			<QueryClientProvider client={client}>
-				<RouterProvider router={router} />
-			</QueryClientProvider>
-		</Provider>
+		<ContextProvider>
+			<Provider store={store}>
+				<QueryClientProvider client={client}>
+					<RouterProvider router={router} />
+					<ToastContainer position="bottom-right" />
+				</QueryClientProvider>
+			</Provider>
+		</ContextProvider>
 	);
 }
 

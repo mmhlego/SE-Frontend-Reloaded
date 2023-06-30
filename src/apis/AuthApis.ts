@@ -1,17 +1,20 @@
 import axios from "axios";
-import { StatusResponse } from "../models/statusResponses";
+import { StatusResponse } from "../models/StatusResponses";
 import { AuthResponse } from "../models/AuthResponse";
 
-export async function Login(username: string, password: string): Promise<AuthResponse> {
+export async function Login(
+	UsernameOrEmail: string,
+	password: string
+): Promise<AuthResponse | StatusResponse> {
 	const response = await axios.post("/Auth/login", {
-		username,
+		UsernameOrEmail,
 		password
 	});
 	return response.data;
 }
 
 export async function Register(
-	type: "Customer",
+	type: number = 4,
 	username: string,
 	password: string,
 	firstName: string,
@@ -20,7 +23,7 @@ export async function Register(
 	avatar: string,
 	email: string,
 	phoneNumber: string
-): Promise<AuthResponse> {
+): Promise<AuthResponse | StatusResponse> {
 	const response = await axios.post("/Auth/register", {
 		type,
 		username,
@@ -44,6 +47,22 @@ export async function ChangePassword(
 		username,
 		oldPassword,
 		newPassword
+	});
+	return response.data;
+}
+
+export async function SendVerificationCode(phoneNumber: string): Promise<StatusResponse> {
+	const response = await axios.post("/Auth/SendVerificationCode", { phoneNumber });
+	return response.data;
+}
+
+export async function LoginByPhoneNumber(
+	phoneNumber: string,
+	code: string
+): Promise<AuthResponse | StatusResponse> {
+	const response = await axios.post("/Auth/LoginByPhoneNumber", {
+		phoneNumber,
+		code
 	});
 	return response.data;
 }

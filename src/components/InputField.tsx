@@ -7,6 +7,7 @@ type Props = {
 	accent?: "" | PrimaryColors;
 	hint?: string;
 	disabled?: boolean;
+	type?: React.HTMLInputTypeAttribute;
 	rtl?: boolean;
 	className?: string;
 	onChange?: (value: string) => void;
@@ -18,6 +19,7 @@ export default function InputField({
 	accent = "",
 	hint = "",
 	disabled = false,
+	type = "text",
 	rtl = false,
 	className,
 	onChange
@@ -53,6 +55,7 @@ export default function InputField({
 					"w-full h-full outline-none bg-transparent",
 					disabled ? "cursor-not-allowed" : ""
 				)}
+				type={type}
 				disabled={disabled}
 			/>
 			<p className="text-xs mt-2 font-light italic">{hint}</p>

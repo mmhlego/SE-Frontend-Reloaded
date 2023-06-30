@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { FiSearch } from "react-icons/fi";
 import { IoIosArrowBack } from "react-icons/io";
@@ -9,10 +9,12 @@ import { twMerge } from "tailwind-merge";
 import { GetAllSubcategories, GetCategories } from "../apis/Products/CategoryApis";
 import Button from "./Button";
 import InputField from "./InputField";
+import { MainContext } from "../Context/MainContext";
 
 export default function Header() {
 	const [searchText, setSearchText] = useState("");
 	const navigate = useNavigate();
+	const ctx = useContext(MainContext);
 
 	return (
 		<>
@@ -47,17 +49,24 @@ export default function Header() {
 					<ProductsSection />
 				</MenuButton>
 				<MenuButton text="فروشندگان">
-					<div className="bg-white p-3 border border-gray-300 shadow-lg rounded-lg">
-						Sellers
-					</div>
+					<SellersSection />
 				</MenuButton>
-				{true ? (
-					<Button accent="green" className="mr-auto px-2.5 gap-2">
-						پروفایل
-						<CgProfile />
-					</Button>
+				{ctx.loggedIn ? (
+					<>
+						<p className="-ml-64 mr-auto">خوش آمدید {ctx.username}</p>
+						<Button
+							accent="green"
+							className="mr-auto px-2.5 gap-2"
+							onClick={() => navigate("/profile")}>
+							پروفایل
+							<CgProfile />
+						</Button>
+					</>
 				) : (
-					<Button accent="blue" className="mr-auto px-4 gap-3">
+					<Button
+						accent="blue"
+						className="mr-auto px-4 gap-3"
+						onClick={() => navigate("/login")}>
 						ورود
 						<SlLogin />
 					</Button>
@@ -107,6 +116,9 @@ function MenuButton({ text, children }: Props2) {
 }
 
 function ProductsSection() {
+	const [selected, setSelected] = useState<string>();
+	const navigate = useNavigate();
+
 	const { data: categories } = useQuery(["categories"], () => GetCategories(), {
 		onSuccess(res) {
 			setSelected(res[0].id);
@@ -114,7 +126,6 @@ function ProductsSection() {
 	});
 	const { data: subcategories } = useQuery(["subcategories"], () => GetAllSubcategories());
 
-	const [selected, setSelected] = useState<string>();
 	return (
 		<div className="bg-white p-3 border border-gray-300 shadow-lg rounded-lg grid grid-cols-[25%_auto]">
 			<div className="border-gray-300 border-l pl-2">
@@ -145,12 +156,29 @@ function ProductsSection() {
 								className={
 									"flex gap-3 items-center mr-2 p-2 hover:bg-cyan/10 hover:border-blue/10 rounded-lg duration-200 border-2 border-transparent"
 								}
-								key={c.id}>
+								key={c.id}
+								onClick={() => navigate("/products")}>
 								<p>{c.title}</p>
 							</div>
 						))}
 				</div>
 			)}
+		</div>
+	);
+}
+
+function SellersSection() {
+	const navigate = useNavigate();
+
+	return (
+		<div className="bg-white p-3 border border-gray-300 shadow-lg rounded-lg grid grid-cols-[25%_auto]">
+			<div
+				className={twMerge(
+					"items-center p-2 hover:bg-cyan/10 rounded-lg duration-200 border-2 border-transparent hover:border-blue/10"
+				)}
+				onClick={() => navigate("/sellers")}>
+				<p>لیست همه فروشندگان</p>
+			</div>
 		</div>
 	);
 }

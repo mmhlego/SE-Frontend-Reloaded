@@ -31,7 +31,14 @@ export default function Button({
 
 	return (
 		<button
-			onClick={disabled ? undefined : onClick}
+			onClick={
+				disabled
+					? undefined
+					: (e) => {
+							e.preventDefault();
+							onClick && onClick(e);
+					  }
+			}
 			className={twMerge(
 				`shadow-lg shadow-black/15 flex gap-1 items-center justify-center py-1.5 px-3 rounded-md border-${color} duration-300 outline-0`,
 				noBorder ? "m-[2px]" : "border-2",

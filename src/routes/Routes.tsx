@@ -8,6 +8,9 @@ import NotFoundPage from "../pages/NotFoundPage";
 import TestPage from "../pages/TestPage";
 import RulesPage from "../pages/RulesPage";
 import SearchPage from "../pages/SearchPage";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
+import ForgotPage from "../pages/ForgotPage";
 
 export const router = createBrowserRouter([
 	{
@@ -44,14 +47,6 @@ export const router = createBrowserRouter([
 			// 	path: "/dashboard",
 			// 	element: <DashboardPage />
 			// },
-			// {
-			// 	path: "/dashboard",
-			// 	element: <DashboardPage />
-			// },
-			// {
-			// 	path: "/rules",
-			// 	element: <RulesPage />
-			// },
 			{
 				path: "/rules",
 				element: <RulesPage />
@@ -70,18 +65,18 @@ export const router = createBrowserRouter([
 			}
 		]
 	},
-	// {
-	// 	path: "/auth/login",
-	// 	element: <LoginPage />
-	// },
-	// {
-	// 	path: "/auth/register",
-	// 	element: <RegisterPage />
-	// },
-	// {
-	// 	path: "/auth/forgot",
-	// 	element: <ForgotPasswordPage />
-	// },
+	{
+		path: "/login",
+		element: <LoginPage />
+	},
+	{
+		path: "/register",
+		element: <RegisterPage />
+	},
+	{
+		path: "/forgot",
+		element: <ForgotPage />
+	},
 	// {
 	// 	path: "/auth/verify",
 	// 	element: <VerifyPage />

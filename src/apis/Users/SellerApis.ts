@@ -3,8 +3,14 @@ import { StatusResponse } from "../../models/StatusResponses";
 import { Seller } from "../../models/Seller";
 import { Pagination } from "../../models/Pagination";
 
-export async function GetSellers(page: number, perPage: number): Promise<Pagination<Seller>> {
-	const response = await axios.get("/Users/Seller/sellers", { params: { page, perPage } });
+export async function GetSellers(
+	page: number,
+	perPage: number,
+	searchText: string = ""
+): Promise<Pagination<Seller>> {
+	const response = await axios.get("/Users/Seller/sellers", {
+		params: { page, perPage, searchText }
+	});
 	return response.data;
 }
 

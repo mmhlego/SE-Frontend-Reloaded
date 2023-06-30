@@ -16,3 +16,5 @@ export type PrimaryColors =
 	| "yellow"
 	| "red"
 	| "cyan";
+
+export type Roles = "Customer" | "Seller" | "Admin" | "StoreKeeper" | "Owner";
