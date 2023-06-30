@@ -11,6 +11,8 @@ import SearchPage from "../pages/SearchPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import ForgotPage from "../pages/ForgotPage";
+import SellersPage from "../pages/SellersPage";
+import MessagesPage from "../pages/MessagesPage";
 
 export const router = createBrowserRouter([
 	{
@@ -27,6 +29,10 @@ export const router = createBrowserRouter([
 				index: true,
 				element: <HomePage />
 			},
+			{
+				path: "/messages",
+				element: <MessagesPage />
+			},
 			// {
 			// 	path: "/products",
 			// 	element: <ProductsPage />
@@ -35,10 +41,10 @@ export const router = createBrowserRouter([
 			// 	path: "/products/:id",
 			// 	element: <ProductPage />
 			// },
-			// {
-			// 	path: "/sellers",
-			// 	element: <SellersPage />
-			// },
+			{
+				path: "/sellers",
+				element: <SellersPage />
+			},
 			// {
 			// 	path: "/sellers/:id",
 			// 	element: <SellerPage />

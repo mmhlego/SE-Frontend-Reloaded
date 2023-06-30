@@ -6,7 +6,7 @@ import { Pagination } from "../../models/Pagination";
 export async function GetSellers(
 	page: number,
 	perPage: number,
-	searchText: string = ""
+	searchText: string | undefined
 ): Promise<Pagination<Seller>> {
 	const response = await axios.get("/Users/Seller/sellers", {
 		params: { page, perPage, searchText }

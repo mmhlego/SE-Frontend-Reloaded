@@ -4,13 +4,13 @@ export interface Product {
 	subcategoryId: string;
 	name: string;
 	description: string;
-	state: ProductStates;
+	state: number;
 }
 
 export enum ProductStates {
-	ComingSoon,
-	AddPending,
-	UpdatePending,
-	Available,
-	ProductionStopped
+	ComingSoon = 0,
+	AddPending = 1,
+	UpdatePending = 2,
+	Available = 3,
+	ProductionStopped = 4
 }

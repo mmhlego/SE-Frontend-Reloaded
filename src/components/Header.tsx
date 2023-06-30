@@ -10,6 +10,7 @@ import { GetAllSubcategories, GetCategories } from "../apis/Products/CategoryApi
 import Button from "./Button";
 import InputField from "./InputField";
 import { MainContext } from "../Context/MainContext";
+import { AiOutlineMessage } from "react-icons/ai";
 
 export default function Header() {
 	const [searchText, setSearchText] = useState("");
@@ -52,16 +53,23 @@ export default function Header() {
 					<SellersSection />
 				</MenuButton>
 				{ctx.loggedIn ? (
-					<>
-						<p className="-ml-64 mr-auto">خوش آمدید {ctx.username}</p>
+					<div className="flex gap-2 mr-auto items-center">
+						<p className="">خوش آمدید {ctx.username}</p>
+						<Button
+							accent="orange"
+							className="mr-0 px-2.5 gap-2"
+							onClick={() => navigate("/messages")}>
+							پیام ها
+							<AiOutlineMessage />
+						</Button>
 						<Button
 							accent="green"
-							className="mr-auto px-2.5 gap-2"
+							className="px-2.5 gap-2"
 							onClick={() => navigate("/profile")}>
 							پروفایل
 							<CgProfile />
 						</Button>
-					</>
+					</div>
 				) : (
 					<Button
 						accent="blue"
