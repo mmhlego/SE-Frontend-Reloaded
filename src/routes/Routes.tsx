@@ -15,6 +15,8 @@ import SellersPage from "../pages/SellersPage";
 import MessagesPage from "../pages/MessagesPage";
 import ProfilePage from "../pages/ProfilePage";
 import SellerPage from "../pages/SellerPage";
+import ProductPage from "../pages/ProductPage";
+import ProductsPage from "../pages/ProductsPage";
 
 export const router = createBrowserRouter([
 	{
@@ -35,14 +37,14 @@ export const router = createBrowserRouter([
 				path: "/messages",
 				element: <MessagesPage />
 			},
-			// {
-			// 	path: "/products",
-			// 	element: <ProductsPage />
-			// },
-			// {
-			// 	path: "/products/:id",
-			// 	element: <ProductPage />
-			// },
+			{
+				path: "/products",
+				element: <ProductsPage />
+			},
+			{
+				path: "/products/:productId",
+				element: <ProductPage />
+			},
 			{
 				path: "/sellers",
 				element: <SellersPage />

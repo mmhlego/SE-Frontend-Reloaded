@@ -1,6 +1,6 @@
 import { ProductStates } from "../models/Product";
 
-export function ProductStateToString(state: number) {
+export function ProductStateToString(state?: number) {
 	switch (state) {
 		case ProductStates.ComingSoon:
 			return "به زودی";

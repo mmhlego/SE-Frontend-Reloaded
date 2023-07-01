@@ -1,5 +1,5 @@
 import axios from "axios";
-import { StatusResponse } from "../../models/statusResponses";
+import { StatusResponse } from "../../models/StatusResponses";
 import { Poster, PosterTypes } from "../../models/Poster";
 
 export async function GetPosters(posterType?: PosterTypes): Promise<Poster[]> {

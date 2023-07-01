@@ -14,3 +14,9 @@ export enum ProductStates {
 	Available = 3,
 	ProductionStopped = 4
 }
+
+export interface ProductImage {
+	id: string;
+	imageUrl: string;
+	productId: string;
+}

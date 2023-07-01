@@ -3,6 +3,7 @@ import { GetSeller } from "../apis/Users/SellerApis";
 import { useQuery } from "@tanstack/react-query";
 import { GetSales } from "../apis/SaleApis";
 import SaleRowItem from "../components/SaleRowItem";
+import { GetComments } from "../apis/General/CommentApis";
 
 export default function SellerPage() {
 	const { sellerId } = useParams();

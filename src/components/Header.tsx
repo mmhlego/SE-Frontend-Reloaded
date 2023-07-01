@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
+import { AiOutlineMessage } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { FiSearch } from "react-icons/fi";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack, IoMdLogOut } from "react-icons/io";
 import { SlLogin } from "react-icons/sl";
 import { useLocation, useNavigate } from "react-router";
 import { twMerge } from "tailwind-merge";
+import { MainContext } from "../Context/MainContext";
 import { GetAllSubcategories, GetCategories } from "../apis/Products/CategoryApis";
 import Button from "./Button";
 import InputField from "./InputField";
-import { MainContext } from "../Context/MainContext";
-import { AiOutlineMessage } from "react-icons/ai";
 
 export default function Header() {
 	const [searchText, setSearchText] = useState("");
@@ -68,6 +68,17 @@ export default function Header() {
 							onClick={() => navigate("/profile")}>
 							پروفایل
 							<CgProfile />
+						</Button>
+						<Button
+							accent="red"
+							className="px-2.5 gap-2"
+							onClick={() => {
+								localStorage.clear();
+								ctx.setLoggedIn(false);
+								navigate("/");
+							}}>
+							خروج
+							<IoMdLogOut />
 						</Button>
 					</div>
 				) : (
