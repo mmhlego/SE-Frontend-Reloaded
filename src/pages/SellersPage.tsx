@@ -17,11 +17,13 @@ export default function SellersPage() {
 		isLoading: sellersLoading,
 		data: sellers,
 		refetch
-	} = useQuery([`sellers`], () => GetSellers(1, 1000, search.length > 0 ? search : undefined));
+	} = useQuery([`sellers`], () => GetSellers(1, 1000, search.length > 0 ? search : undefined), {
+		cacheTime: 0
+	});
 
 	return (
 		<div className="flex flex-col p-8 gap-4">
-			<div className=" w-full flex items-center justify-center gap-3">
+			<form className=" w-full flex items-center justify-center gap-3">
 				<Button
 					text="جستجو کن"
 					onClick={() => {
@@ -29,12 +31,12 @@ export default function SellersPage() {
 					}}
 				/>
 				<InputField value={search} onChange={setSearch} className="w-2/3" rtl />
-			</div>
+			</form>
 
 			{sellersLoading ? (
 				<Loading />
 			) : sellers?.data.length === 0 ? (
-				<p className="p-5 text-center text-xl font-medium">فروشنده ای یافت نشد</p>
+				<p className="p-10 text-center text-xl font-medium">فروشنده ای یافت نشد</p>
 			) : (
 				sellers?.data.map((seller) => (
 					<SellerRowItem key={seller.username} seller={seller} />

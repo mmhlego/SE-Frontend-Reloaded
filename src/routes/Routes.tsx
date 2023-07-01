@@ -13,6 +13,8 @@ import RegisterPage from "../pages/RegisterPage";
 import ForgotPage from "../pages/ForgotPage";
 import SellersPage from "../pages/SellersPage";
 import MessagesPage from "../pages/MessagesPage";
+import ProfilePage from "../pages/ProfilePage";
+import SellerPage from "../pages/SellerPage";
 
 export const router = createBrowserRouter([
 	{
@@ -45,14 +47,14 @@ export const router = createBrowserRouter([
 				path: "/sellers",
 				element: <SellersPage />
 			},
-			// {
-			// 	path: "/sellers/:id",
-			// 	element: <SellerPage />
-			// },
-			// {
-			// 	path: "/dashboard",
-			// 	element: <DashboardPage />
-			// },
+			{
+				path: "/sellers/:sellerId",
+				element: <SellerPage />
+			},
+			{
+				path: "/profile",
+				element: <ProfilePage />
+			},
 			{
 				path: "/rules",
 				element: <RulesPage />

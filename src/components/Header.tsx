@@ -165,7 +165,7 @@ function ProductsSection() {
 									"flex gap-3 items-center mr-2 p-2 hover:bg-cyan/10 hover:border-blue/10 rounded-lg duration-200 border-2 border-transparent"
 								}
 								key={c.id}
-								onClick={() => navigate("/products")}>
+								onClick={() => navigate(`/products?subcategoryId=${c.id}`)}>
 								<p>{c.title}</p>
 							</div>
 						))}

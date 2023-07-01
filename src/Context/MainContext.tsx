@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { Roles } from "../models/Types";
+import axios from "axios";
 
 interface Context {
 	loggedIn: boolean;
@@ -24,7 +25,18 @@ export const ContextProvider = ({ children }: { children: JSX.Element[] | JSX.El
 	const [username, setUsername] = useState<string>("");
 	const [role, setRole] = useState<Roles>();
 
-	useEffect(() => {}, []);
+	useEffect(() => {
+		const jwt = localStorage.getItem("jwt");
+		const username = localStorage.getItem("username")!;
+		const role = localStorage.getItem("role")!;
+
+		if (jwt !== null) {
+			axios.defaults.headers.common.Authorization = `Bearer ${jwt}`;
+			setUsername(username!);
+			setLoggedIn(true);
+			setRole(role as Roles);
+		}
+	}, []);
 
 	const ctx = {
 		loggedIn,

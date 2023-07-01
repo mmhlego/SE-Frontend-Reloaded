@@ -28,6 +28,8 @@ export default function LoginPage() {
 
 				toast.success("با موفقیت وارد شدید. در حال انتقال ...");
 				localStorage.setItem("jwt", res.jwtToken);
+				localStorage.setItem("username", res.userName);
+				localStorage.setItem("role", res.role);
 				axios.defaults.headers.common.Authorization = `Bearer ${res.jwtToken}`;
 
 				setTimeout(() => navigate("/"), 2000);

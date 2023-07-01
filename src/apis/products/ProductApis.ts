@@ -25,3 +25,8 @@ export async function GetProducts(
 	});
 	return response.data;
 }
+
+export async function GetProduct(id: string): Promise<Product> {
+	const response = await axios.get(`/Products/Product/products/${id}`, {});
+	return response.data;
+}
